@@ -6,11 +6,11 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
-public:
+class Solution 
+{
+    public:
     bool hasCycle(ListNode *head) 
     {
-        
         if(head == NULL)
             return 0;
         
@@ -20,7 +20,7 @@ public:
             slow = slow->next;
             fast = fast->next->next;
             if(slow == fast)
-                return 1;
+                return true;
         }
         
         return false;
