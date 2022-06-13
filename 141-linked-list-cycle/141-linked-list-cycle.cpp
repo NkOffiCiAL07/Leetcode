@@ -6,8 +6,9 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
-public:
+class Solution 
+{
+    public:
     bool hasCycle(ListNode *head) 
     {
         
