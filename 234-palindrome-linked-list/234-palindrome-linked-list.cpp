@@ -23,7 +23,6 @@ class Solution
         temp = head;
         int t;
         t = sz & 1 ? sz / 2 + 1 : sz / 2;
-        //cout<<t<<endl;
         while(t--) temp = temp->next;
         
         ListNode *left = NULL, *right = NULL;
