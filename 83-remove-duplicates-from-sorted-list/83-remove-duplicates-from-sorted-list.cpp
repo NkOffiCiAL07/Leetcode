@@ -16,7 +16,7 @@ class Solution
         if(head == NULL)
             return head;
         
-        ListNode* ans = new ListNode(head->val), *node;
+        ListNode *ans = new ListNode(head->val), *node;
         node = ans;
         while(head)
         {
@@ -25,10 +25,8 @@ class Solution
                 ans->next = new ListNode(head->val);
                 ans = ans->next;
             }
-            
             head = head->next;
         }
-        
         return node;
     }
 };
