@@ -7,9 +7,11 @@ class Solution
         int sum = 0, mn = INT_MAX, mx = INT_MIN;
         
         vector<int> dp(n);
-        for(int i=n-1; i>=0; i--)
+        dp[n-1] = p[n-1];
+        for(int i=n-2; i>=0; i--)
         {
-            dp[i] = max(dp[i], p[i]);
+            dp[i] = max(dp[i+1], p[i]);
+            
         }
         
         for(int i=0; i<n; i++)
