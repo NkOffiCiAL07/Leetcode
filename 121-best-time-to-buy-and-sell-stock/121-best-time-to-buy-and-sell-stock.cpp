@@ -10,7 +10,7 @@ class Solution
         dp[n-1] = p[n-1];
         for(int i=n-2; i>=0; i--)
         {
-            dp[i] = max(dp[i+1], p[i]);
+            dp[i] = max(dp[i], p[i]);
             
         }
         
