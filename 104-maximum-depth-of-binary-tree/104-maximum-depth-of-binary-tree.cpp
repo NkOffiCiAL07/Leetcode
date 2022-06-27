@@ -11,24 +11,15 @@
  */
 class Solution 
 {
-    public:
-    int mx = INT_MIN;
-    void solve(TreeNode *root, int ans)
-    {
-        if(root == NULL)
-        {
-            mx = max(mx, ans);
-            return;
-        }
-        
-        solve(root->left, ans+1);
-        solve(root->right, ans+1);
-    }
-    
+    public:    
     int maxDepth(TreeNode* root) 
     {
-        int ans = 0;
-        solve(root, ans);
-        return mx;
+        if(root == NULL)
+            return 0;
+
+        int l = maxDepth(root->left);
+        int r = maxDepth(root->right);
+
+        return 1 + max(l ,r);
     }
 };
