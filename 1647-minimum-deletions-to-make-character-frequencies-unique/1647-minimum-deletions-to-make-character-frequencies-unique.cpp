@@ -25,13 +25,11 @@ class Solution
             if(tmp < p[i].second)
             {
                 ans += p[i].second - tmp;
-                if(tmp > 0)
-                    tmp--;
+                if(tmp > 0) tmp--;
             }
             else
                 tmp = p[i].second - 1;
         }
-        
         return ans;
     }
 };
