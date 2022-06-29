@@ -20,7 +20,7 @@ class Solution
         solve(root->left);
         solve(root->right);
         
-        if(root->left != NULL or root->right != NULL)
+        if(root->left != NULL || root->right != NULL)
             swap(root->left, root->right);
     }
     
