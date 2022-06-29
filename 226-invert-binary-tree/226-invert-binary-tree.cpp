@@ -20,13 +20,11 @@ class Solution
         solve(root->left);
         solve(root->right);
         
-        TreeNode* swap;
-
         if(root->left == NULL and root->right == NULL)
                 return;
         else
         {
-            swap = root->left;
+            TreeNode* swap = root->left;
             root->left = root->right;
             root->right = swap;
             return;
