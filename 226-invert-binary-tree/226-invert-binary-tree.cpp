@@ -23,10 +23,7 @@ class Solution
         if(root->left == NULL and root->right == NULL)
                 return;
         else
-        {
             swap(root->left, root->right);
-            return;
-        }
     }
     
     TreeNode* invertTree(TreeNode* root) 
