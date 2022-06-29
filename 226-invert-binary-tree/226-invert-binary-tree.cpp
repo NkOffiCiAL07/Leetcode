@@ -24,9 +24,7 @@ class Solution
                 return;
         else
         {
-            TreeNode* swap = root->left;
-            root->left = root->right;
-            root->right = swap;
+            swap(root->left, root->right);
             return;
         }
     }
