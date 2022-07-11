@@ -18,9 +18,6 @@ class Solution
             }
         }
         
-        if(dp[n] > n)
-            return -1;
-        
-        return dp[n];
+        return dp[n] > n ? -1 : dp[n];
     }
 };
