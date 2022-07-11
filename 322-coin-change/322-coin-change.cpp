@@ -1,23 +1,23 @@
 class Solution 
 {
-    public:
-    
-    int coinChange(vector<int>& coins, int n) 
+    public:    
+    int coinChange(vector<int>& coins, int amount) 
     {
-        vector<int> dp(n+1, n+1);
-        dp[0] = 0;
+        int n = coins.size();
+        vector<int> dp(amount+1, amount+1);
         
-        for(int i=0; i<=n; i++)
+        dp[0] = 0;
+        for(int am=0; am<=amount; am++)
         {
-            for(auto val : coins)
+            for(int j=0; j<n; j++)
             {
-                if(i >= val)
+                if(coins[j] <= am)
                 {
-                     dp[i] = min(dp[i], dp[i - val] + 1);
+                    dp[am] = min(dp[am], dp[am - coins[j]] + 1);
                 }
             }
         }
         
-        return dp[n] > n ? -1 : dp[n];
+        return dp[amount] > amount ? -1 : dp[amount];
     }
 };
