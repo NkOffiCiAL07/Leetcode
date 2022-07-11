@@ -9,12 +9,11 @@ class Solution
         
         for(int i=0; i<=n; i++)
         {
-            int ans = INT_MAX;
             for(auto val : coins)
             {
-                if(i-val >= 0)
+                if(i >= val)
                 {
-                     dp[i] = min(dp[i], dp[i-val] + 1);
+                     dp[i] = min(dp[i], dp[i - val] + 1);
                 }
             }
         }
