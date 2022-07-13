@@ -26,7 +26,15 @@ class Solution
     
     TreeNode* invertTree(TreeNode* root) 
     {
-        solve(root);
+        if(root == NULL)
+            return root;
+        
+        invertTree(root->left);
+        invertTree(root->right);
+        
+        if(root->left != NULL || root->right != NULL)
+            swap(root->left, root->right);
+        
         return root;
     }
 };
