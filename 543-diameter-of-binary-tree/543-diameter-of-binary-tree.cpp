@@ -11,7 +11,7 @@
  */
 class Solution 
 {
-    public:
+    public:    
     int mx = INT_MIN;
     int solve(TreeNode *root)
     {
@@ -22,6 +22,7 @@ class Solution
         int r = solve(root->right);
         
         mx = max(mx, l + r);
+        
         return 1 + max(l, r);
     }
     
