@@ -1,24 +1,57 @@
 class Solution 
 {
     public:
-    int maxarea(vector<int> &v)
+    int maxarea(vector<int>& h) 
     {
         stack<int> s;
-        int ans = 0;
-        for(int i = 0; i <= v.size(); i++)
+        vector<int> p, n;
+        for(int i=0; i<h.size(); i++)
         {
-            while(!s.empty() && (i==v.size() || v[s.top()]>v[i]))
+            if(s.empty())
+                p.push_back(-1);
+            else
             {
-                int cur = s.top();
-                s.pop();
-                int width = s.empty() ? i : i-s.top() - 1;
-                ans = max(ans, width * v[cur]);
+                while((!s.empty()) && (h[s.top()] >= h[i]))
+                    s.pop();
+                
+                if(s.empty())
+                    p.push_back(-1);
+                else
+                    p.push_back(s.top());
             }
             
             s.push(i);
         }
         
-        return ans;
+        while(!s.empty()) s.pop();
+        
+        for(int i=h.size()-1; i>=0; i--)
+        {
+            if(s.empty())
+                n.push_back(h.size());
+            else
+            {
+                while((!s.empty()) && (h[s.top()] >= h[i]))
+                    s.pop();
+                
+                if(s.empty())
+                    n.push_back(h.size());
+                else
+                    n.push_back(s.top());
+            }
+            
+            s.push(i);
+        }
+        
+        reverse(n.begin(), n.end());
+
+        int mx = INT_MIN;
+        for(int i=0; i<h.size(); i++)
+        {
+            mx = max(mx, (n[i]-p[i]-1)*h[i]);
+        }
+        
+        return mx;
     }
     
     int maximalRectangle(vector<vector<char>>& matrix) 
