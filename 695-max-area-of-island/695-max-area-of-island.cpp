@@ -15,7 +15,8 @@ class Solution
     }
     
     
-    int maxAreaOfIsland(vector<vector<int>>& grid) {
+    int maxAreaOfIsland(vector<vector<int>>& grid) 
+    {
         int n = grid.size();
         int m = grid[0].size();
         int ans = 0, x =0;
