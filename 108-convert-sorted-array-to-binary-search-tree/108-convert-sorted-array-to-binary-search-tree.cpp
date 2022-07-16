@@ -12,7 +12,7 @@
 class Solution 
 {
     public:
-    TreeNode *solve(vector<int> &a, int l, int r)
+    TreeNode *solve(vector<int> a, int l, int r)
     {
         if(l > r)
             return NULL;
