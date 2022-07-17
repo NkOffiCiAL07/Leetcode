@@ -17,7 +17,6 @@ class Solution
             if(i + z[i] - 1 > r)
                 l = i, r = i + z[i] - 1;
         }
-        
         return z;
     }
     
