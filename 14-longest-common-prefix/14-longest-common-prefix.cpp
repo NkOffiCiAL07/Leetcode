@@ -1,54 +1,35 @@
 class Solution 
 {
     public:
-    string solve(string &a, string &b)
+    bool cmp(string &a, string &b)
     {
-        string s;
-        for(int i=0; i<min(a.size(), b.size()); i++)
-        {
-            if(a[i] == b[i])
-                s += a[i];
-            else break;
-        }
-        
-        return s;
+        return a.size()<b.size();
     }
     
-    string longestCommonPrefix(vector<string>& str) 
+    string longestCommonPrefix(vector<string> &strs) 
     {
-        while(1)
+        sort(strs.begin(), strs.end());
+        string str;
+        int mx = -1;
+        for(int i=(int)strs[0].size(); i>0; i--)
         {
-            vector<string> s;
-            if(str.size() % 2 == 0)
+            bool b = 1;
+            for(int j=1; j<(int)strs.size(); j++)
             {
-                for(int i=0; i<str.size()-1; i+=2)
+                if(strs[0].substr(0, i) != strs[j].substr(0, i))
                 {
-                    string st = solve(str[i], str[i+1]);
-                    s.push_back(st);
+                    b = 0;
+                    break;
                 }
-                str = s;
-            }
-            else
-            {
-                for(int i=0; i<str.size(); i+=2)
-                {
-                    if(i+1<str.size())
-                    {
-                        string st = solve(str[i], str[i+1]);
-                        s.push_back(st);
-                    }
-                    else
-                    {
-                        s.push_back(str[i]);
-                    }
-                }
-                
-                str = s;
             }
             
-            //cout<<str[0]<<" ";
-            if(str.size() == 1)
-                return str[0];
+            if(b && i > mx)
+            {
+                str = strs[0].substr(0, i);
+                mx = i;
+            }
         }
+        
+        return str;
     }
 };
