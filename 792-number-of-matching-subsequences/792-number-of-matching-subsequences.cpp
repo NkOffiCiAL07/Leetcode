@@ -1,29 +1,51 @@
 class Solution {
 public:
-    bool help(string s,string word)
-    {
-        int k=0;
-        for(int i=0;i<s.size();i++)
+    int bs(vector<int> &arr, int x){
+        int start = 0;
+        int end = arr.size()-1;
+        int ans = -1;
+        while (start <= end)
         {
-            if(s[i]==word[k])k++;
-            if(k==word.size())
-                return true;
+            int mid = (start + end) / 2;
+
+            if (arr[mid] <= x)
+                start = mid + 1;
+            else
+            {
+                ans = mid;
+                end = mid - 1;
+            }
         }
-        return false;
+        return ans==-1 ? ans : arr[ans];
     }
     
+
     int numMatchingSubseq(string s, vector<string>& words) {
-        unordered_map<string,int>m;
-        int ans=0;
-        for(int i=0;i<words.size();i++)
-        {
-            m[words[i]]++;
+	
+		// First , we are mapping index of characters of given string to respective characters
+        unordered_map<char,vector<int>> mp;
+        for(int i=0;i<s.length();i++){
+            mp[s[i]].push_back(i);
         }
-        for(auto it:m)
-        {
-            if(help(s,it.first))
-                ans+=it.second;
+          
+        int count = words.size(); // initializing ans 
+		
+        for(auto w : words){
+            int prev = -1;
+            for(int j=0;j<w.size();j++){
+				// Searching for strictly greater element than prev using binary search
+                int x = bs(mp[w[j]],prev);
+				// If strictly greater element not found, the current subsequence cannot be formed.
+                if(x == -1){
+                    count--;
+                    break;
+                }
+				// Else, updating the prev
+                else{
+                    prev = x;
+                }
+            }
         }
-        return ans;
+        return count;
     }
 };
