@@ -2,25 +2,30 @@ class Solution
 {
     public:
     vector<string> ar;
-    void solve(string s, int k, int n)
+    void solve(string s, int k, int o = 0, int c = 0)
     {
-        if(k == 0)
+        if(o == c && c == k)
         {
-            if(n == 0)
-                ar.push_back(s);
+            ar.push_back(s);
             return;
         }
         
-        if(n < 0 || n > k)
+        if(c > k || o > k || c > o)
             return;
         
-        solve(s + '(', k-1, n+1);
-        solve(s + ')', k-1, n-1);
+        if(s.size() > 2 * k)
+            return;
+        
+        if(o < k)
+            solve(s + '(', k, o+1, c); 
+        
+        if(c < o)
+            solve(s + ')', k, o, c+1); 
     } 
     
     vector<string> generateParenthesis(int n) 
     {
-        solve("", 2 * n, 0);
+        solve("", n);
         return ar;
     }
 };
