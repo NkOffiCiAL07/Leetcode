@@ -20,6 +20,6 @@ class Solution
         int l = maxDepth(root->left);
         int r = maxDepth(root->right);
 
-        return 1 + max(l ,r);
+        return 1 + max(l, r);
     }
 };
