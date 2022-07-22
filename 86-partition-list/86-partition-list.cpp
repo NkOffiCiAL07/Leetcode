@@ -13,9 +13,7 @@ class Solution
     public:
     ListNode* partition(ListNode* head, int x) 
     {
-        if(head == NULL || head->next == NULL)
-            return head;
-        
+  
         ListNode *l1 = new ListNode(0), *l2 = new ListNode(0),  *ans, *tmp;
         tmp = l2; ans = l1;
         
