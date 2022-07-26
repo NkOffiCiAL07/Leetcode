@@ -12,29 +12,25 @@
 class Solution 
 {
     public:
-    vector<string> s;
-    void solve(TreeNode *root, string str)
+    vector<string> ans;
+    void path(TreeNode *root,string s)
     {
-        if(root == NULL)
+        if(!root->left && !root->right)
         {
-            //s.push_back(str);
+            s += to_string(root->val);
+            ans.push_back(s);
             return;
         }
         
-        if(root->left == NULL && root->right == NULL)
-        {
-            str += to_string(root->val);
-            s.push_back(str);
-            return;            
-        }
-        
-        str += to_string(root->val) + "->";
-        solve(root->left, str);
-        solve(root->right, str);
+        s += to_string(root->val) + "->";
+        if(root->right) path(root->right, s);
+        if(root->left) path(root->left, s);
     }
     
-    vector<string> binaryTreePaths(TreeNode* root) {
-        solve(root, "");
-        return s;
+    public:
+    vector<string> binaryTreePaths(TreeNode* root)
+    {
+        path(root, "");
+        return ans;
     }
 };
