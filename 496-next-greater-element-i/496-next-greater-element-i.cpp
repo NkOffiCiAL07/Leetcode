@@ -17,7 +17,7 @@ public:
         
         vector<int> ans;
         for (int n : findNums) 
-            ans.push_back(m[n]!=0 ? m[n] : -1);
+            ans.push_back(m[n] != 0 ? m[n] : -1);
         
         return ans;
     }
