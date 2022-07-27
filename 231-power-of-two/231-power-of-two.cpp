@@ -3,6 +3,9 @@ class Solution
     public:
     bool isPowerOfTwo(int n) 
     {
-        return n && (!((long)n & ((long)n-1)));    
+        if(n == INT_MIN)
+            return 0;
+        
+        return n && (!(n & (n-1)));    
     }
 };
