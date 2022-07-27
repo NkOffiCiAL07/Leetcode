@@ -1,18 +1,18 @@
 class Solution 
 {
     public:
-    int maxArea(vector<int> &a) 
+    int maxArea(vector<int>& h) 
     {
-        int i = 0, j = a.size()-1;
-        int ans = INT_MIN;
+        int mx = INT_MIN;
+        int i = 0, j = h.size()-1;
         while(i < j)
         {
-            ans = max(ans, min(a[i], a[j]) * (j - i));
-            
-            if(a[i] < a[j]) i++;
+            int area = (j - i) * min(h[i], h[j]);
+            mx = max(mx, area);
+            if(h[i] < h[j]) i++;
             else j--;
         }
         
-        return ans;
+        return mx;
     }
 };
