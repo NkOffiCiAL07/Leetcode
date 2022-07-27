@@ -1,7 +1,8 @@
 class Solution 
 {
     public:
-    int maxArea(vector<int>& a) {
+    int maxArea(vector<int> &a) 
+    {
         int i = 0, j = a.size()-1;
         int ans = INT_MIN;
         while(i < j)
