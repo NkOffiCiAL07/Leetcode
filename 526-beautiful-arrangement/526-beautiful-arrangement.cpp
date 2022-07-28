@@ -1,7 +1,9 @@
 class Solution 
 {
-    void solve(int n, int pos, vector<bool>& vis, int& c)
+    int x = 0;
+    void solve(int &n, int pos, vector<bool>& vis, int& c)
     {
+        x++;
         if(pos > n) c++;
         for(int i = 1; i <= n; i++)
         {
@@ -20,6 +22,8 @@ class Solution
         vector<bool> vis(n+1, false);
         int c = 0;
         solve(n, 1, vis, c);
+        
+        cout << x << endl;
         return c;
     }
 };
