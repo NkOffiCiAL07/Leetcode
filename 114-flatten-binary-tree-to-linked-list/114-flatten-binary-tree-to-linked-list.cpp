@@ -18,15 +18,15 @@ class Solution
         if(root == NULL)
             return;
         
-        TreeNode* temp = root->right;
+        TreeNode *t1 = root->right;
         root->right = root->left;
-        root->left = nullptr;
+        root->left = NULL;
+        
         TreeNode *node = root;
-
         while(node->right)
             node = node->right;
-
-        node->right = temp;
-        flatten(root->right); 
+        
+        node->right = t1;
+        flatten(root->right);
     }
 };
