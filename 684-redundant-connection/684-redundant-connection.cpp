@@ -5,7 +5,7 @@ class Solution
     bool dfs(int v, vector<bool> &vis, int par = -1)
     {
         if(vis[v])
-            return 1;
+            return true;
         
         vis[v] = 1;
         
