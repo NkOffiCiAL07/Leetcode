@@ -6,7 +6,7 @@ class Solution
         unordered_map<char, int> m;
         string res = "";
         int i = 0;
-
+        
         for(auto it : s) 
         {
             if(m.find(it) == m.end())
@@ -14,6 +14,7 @@ class Solution
             
             res += to_string(m[it]);
         }
+        
         return res;
     }
     
