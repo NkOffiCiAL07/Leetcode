@@ -11,11 +11,8 @@ class Solution
         col[v] = c;
         for(auto ch : g[v])
         {
-            if(!vis[ch] && !dfs(ch, c^1, g))
+            if((!vis[ch] && !dfs(ch, c^1, g)) || (col[v] == col[ch]))
                 return 0;
-                
-            else if(col[v] == col[ch])
-                return 0; 
         }
         
         return 1;
