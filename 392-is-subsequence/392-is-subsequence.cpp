@@ -3,24 +3,26 @@ class Solution
     public:
     bool isSubsequence(string s, string t) 
     {
-        int m = s.length();
-        int n = t.length();
-        vector<vector<int>> dp(m+1, vector<int> (n+1));
-
-        for(int i=1; i<=m; i++) dp[i][0] = 0;
-        for(int j=0; j<=n; j++) dp[0][j] = 1;
-        
-        for(int i=1; i<=m; i++)
+        int k=0;
+        for(int i=0; i<s.size(); i++)
         {
-            for(int j=1; j<=n; j++)
+            bool b = 0;
+            for(int j=k; j<t.size(); j++)
             {
-                if(s[i-1] == t[j-1]) 
-                    dp[i][j] = dp[i-1][j-1];
-                else 
-                    dp[i][j] = dp[i][j-1];
+                if(s[i] == t[j])
+                {
+                    k = j+1;
+                    b = 1;
+                    break;
+                }
+            }
+            
+            if(!b)
+            {
+                return false;
             }
         }
         
-        return dp[m][n];
+        return true;
     }
 };
