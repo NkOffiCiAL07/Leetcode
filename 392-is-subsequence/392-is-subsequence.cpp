@@ -1,28 +1,19 @@
 class Solution 
 {
     public:
+    bool isSubsequence(string &s, string &t, int n, int m)
+    {
+        if(n > m)
+            return false;
+        
+        if(n == 0)
+            return true; 
+        
+        return isSubsequence(s, t, n - (s[n-1] == t[m-1]), m-1);
+    }
+    
     bool isSubsequence(string s, string t) 
     {
-        int k=0;
-        for(int i=0; i<s.size(); i++)
-        {
-            bool b = 0;
-            for(int j=k; j<t.size(); j++)
-            {
-                if(s[i] == t[j])
-                {
-                    k = j+1;
-                    b = 1;
-                    break;
-                }
-            }
-            
-            if(!b)
-            {
-                return false;
-            }
-        }
-        
-        return true;
+        return isSubsequence(s, t, s.size(), t.size());
     }
 };
