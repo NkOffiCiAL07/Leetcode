@@ -9,12 +9,10 @@ public:
         if(transactionsLeft == 0){
             return 0;
         }
-        
-        int &ans = Memo[day][transactionsLeft]; 
-        
-        if(ans != -1)
+ 
+        if(Memo[day][transactionsLeft] != -1)
         { 
-            return ans;
+            return Memo[day][transactionsLeft];
         }
         
         int ans1 = solve(prices, day + 1, transactionsLeft, Memo);
@@ -31,14 +29,13 @@ public:
             ans2 = prices[day] + solve(prices, day + 1, transactionsLeft - 1, Memo);
         }
         
-        return ans = max(ans1, ans2); 
+        return Memo[day][transactionsLeft] = max(ans1, ans2); 
     }
     
     
     int maxProfit(vector<int>& prices) 
     {
         vector<vector<int>> Memo(prices.size(), vector<int>(5, -1));
-        int ans = solve(prices, 0, 4, Memo);
-        return ans;
+        return solve(prices, 0, 4, Memo);
     }
 };
