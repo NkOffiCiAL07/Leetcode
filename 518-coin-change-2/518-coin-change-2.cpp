@@ -8,7 +8,7 @@ public:
         
         for(int i=0; i<n; i++)
         {
-            for(int am = 0; am <= amount; am++)
+            for(int am = coins[i]; am <= amount; am++)
             {
                 if(coins[i] <= am)
                 {
