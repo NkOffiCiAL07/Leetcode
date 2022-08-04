@@ -25,6 +25,7 @@ class Solution
         q.push(target);
         vector<int> res;
         unordered_map<TreeNode*, bool> visited;
+        
         while(!q.empty()) 
         {
             int len = q.size();
@@ -47,7 +48,7 @@ class Solution
                     q.push(curr->right);
                 }
 
-                if(m.find(curr) != m.end() && visited[m[curr]] == false) 
+                if((m.find(curr) != m.end()) && !visited[m[curr]]) 
                 {
                     q.push(m[curr]);
                 }
