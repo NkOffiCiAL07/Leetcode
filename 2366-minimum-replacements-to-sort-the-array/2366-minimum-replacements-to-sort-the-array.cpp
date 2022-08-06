@@ -7,17 +7,11 @@ public:
         {
             if(nums[i] > nums[i+1])
             {
-                if(nums[i] % nums[i+1] == 0)
-                {
-                    ans += (nums[i] / nums[i+1]) - 1,
-                    nums[i] = nums[i+1];
-                }
-                else
-                {
+
 				    int temp = ((nums[i]  + nums[i+1] - 1) / nums[i+1]);
                     ans += temp - 1;
                     nums[i] = nums[i] / temp;
-                }
+                
             }
         }
         
