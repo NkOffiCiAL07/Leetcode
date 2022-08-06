@@ -18,12 +18,11 @@ public:
             return root;
         }
         
-        TreeNode *ans = root;
         if(val > root->val)
-            ans->right = insertIntoBST(root->right, val);
+            root->right = insertIntoBST(root->right, val);
         else
-            ans->left = insertIntoBST(root->left, val);
+            root->left = insertIntoBST(root->left, val);
         
-        return ans;
+        return root;
     }
 };
