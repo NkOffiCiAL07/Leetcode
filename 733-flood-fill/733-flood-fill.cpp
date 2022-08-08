@@ -7,10 +7,10 @@ class Solution
             return;
         
         image[i][j] = newColor;
-        dfs(image,i-1, j, val, newColor);
-        dfs(image,i+1, j, val, newColor);
-        dfs(image,i, j-1, val, newColor);
-        dfs(image,i, j+1, val, newColor);
+        dfs(image, i-1, j, val, newColor);
+        dfs(image, i+1, j, val, newColor);
+        dfs(image, i, j-1, val, newColor);
+        dfs(image, i, j+1, val, newColor);
     }
     
     vector<vector<int>> floodFill(vector<vector<int>> &image, int sr, int sc, int newColor)
