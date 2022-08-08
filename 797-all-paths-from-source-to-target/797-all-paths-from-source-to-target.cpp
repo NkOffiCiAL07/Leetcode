@@ -1,33 +1,33 @@
-class Solution 
-{
-    public:
-    vector<vector<int>> ar;
+class Solution {
+public:
     vector<int> adj[20];
-    void dfs(int u, vector<int> a, int dest)
-    {   
-        if(dest == u)
+    vector<vector<int>> ar;
+    void dfs(int u, int n, vector<int> a)
+    {
+        if(u == n)
         {
+            a.push_back(n);
             ar.push_back(a);
             return;
         }
         
-        for(auto v : adj[u])
+        a.push_back(u);
+        for(auto child : adj[u])
         {
-            a.push_back(v);
-            dfs(v, a, dest);
-            a.pop_back();
+            dfs(child, n, a);
         }
     }
     
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-        int n = graph.size();
-        for(int i=0; i<n; i++)
+        for(int i=0; i<graph.size(); i++)
         {
             for(auto v : graph[i])
+            {
                 adj[i].push_back(v);
+            }
         }
         
-        dfs(0, {0}, n-1);
+        dfs(0, graph.size()-1, {});
         return ar;
     }
 };
