@@ -14,14 +14,13 @@ public:
                 if(arr[i] % arr[j] == 0)
                 {
                     mp[arr[i]] += (mp[arr[j]] * mp[arr[i] / arr[j]]) % mod;
-                    //mp[arr[i]] %= mod;
                 }
             }
         }
           
         long long ans = 0;
-        for(auto it = mp.begin(); it!=mp.end(); it++){
-             ans= (ans + it->second)  % mod;
+        for(auto it : mp){
+             ans= (ans + it.second)  % mod;
         }
         
         return ans;
