@@ -1,31 +1,25 @@
-class Solution 
-{
-    public:
+class Solution {
+public:
     vector<int> adj[200001];
     bool vis[200001];
-    
-    bool validPath(int n, vector<vector<int>>& edges, int s, int d) 
+    void dfs(int u)
     {
-        for(auto a : edges)
+        vis[u] = true;
+        for(auto child : adj[u])
         {
-            adj[a[0]].push_back(a[1]);
-            adj[a[1]].push_back(a[0]);
+            if(!vis[child])
+                dfs(child);
+        }
+    }
+    
+    bool validPath(int n, vector<vector<int>>& edges, int source, int destination) {
+        for(auto v : edges)
+        {
+            adj[v[0]].push_back(v[1]);
+            adj[v[1]].push_back(v[0]);
         }
         
-        queue<int> q;
-        q.push(s);
-        while(!q.empty())
-        {
-            int v = q.front();
-            vis[v] = true;
-            q.pop();
-            for(auto k : adj[v])
-            {
-                if(!vis[k])
-                    q.push(k);
-            }
-        }
-        
-        return vis[d];
+        dfs(source);
+        return vis[destination];
     }
 };
