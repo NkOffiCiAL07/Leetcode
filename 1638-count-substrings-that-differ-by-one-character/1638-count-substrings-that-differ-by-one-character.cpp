@@ -23,6 +23,8 @@ int countSubstrings(string s, string t)
                       
                       i++; j++;
                       
+                      if(diff > 1)
+                          break;
                   }
               }
           }
