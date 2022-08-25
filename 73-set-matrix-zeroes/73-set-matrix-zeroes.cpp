@@ -1,33 +1,36 @@
-class Solution 
-{
-    public:
-    void setZeroes(vector<vector<int>>& m) 
-    {
-        vector<int> r, c;
-        for(int i=0; i<m.size(); i++)
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        int m = matrix[0].size();
+        set<int> r, c;
+        for(int i=0; i<n; i++)
         {
-            for(int j=0; j<m[0].size(); j++)
+            for(int j=0; j<m; j++)
             {
-                if(m[i][j] == 0)
+                if(matrix[i][j] == 0)
                 {
-                    r.push_back(i);
-                    c.push_back(j);
+                    r.insert(i);
+                    c.insert(j);
                 }
             }
         }
+        
+        for(auto i : r)
+        {
+            for(int j=0; j<m; j++)
+            {
+                matrix[i][j] = 0;
+            }
+        }
+        
+        for(auto j : c)
+        {
+            for(int i=0; i<n; i++)
+            {
+                matrix[i][j] = 0;
+            }
+        }
     
-        
-        for(auto x : r)
-        {
-            for(int j=0; j<m[0].size(); j++)
-                m[x][j] = 0;
-        }
-        
-        for(auto x : c)
-        {
-            for(int j=0; j<m.size(); j++)
-                m[j][x] = 0;
-        }
-
     }
 };
