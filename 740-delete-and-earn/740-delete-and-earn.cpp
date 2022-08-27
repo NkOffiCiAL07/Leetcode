@@ -6,7 +6,7 @@ public:
         for(auto x : nums) 
             m = max(m, x);
 
-        vector<int> arr(m+1, 0);
+        vector<int> arr(m+1);
         for(auto x : nums) 
             arr[x] += x;
 
