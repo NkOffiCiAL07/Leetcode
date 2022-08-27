@@ -8,10 +8,7 @@ public:
 
         vector<int> arr(m+1, 0);
         for(auto x : nums) 
-            arr[x]++;
-        
-        for(int i=0; i<=m; i++) 
-            arr[i] = i*arr[i];
+            arr[x] += x;
 
         vector<int> dp(m+1, 0);
         dp[0] = 0;
