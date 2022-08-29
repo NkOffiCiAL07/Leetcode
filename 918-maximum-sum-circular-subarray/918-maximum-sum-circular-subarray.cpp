@@ -1,31 +1,32 @@
-class Solution {
-public:
-int MaxSubarray(vector<int> &nums)
+class Solution 
 {
-    int maxEnding = nums[0];
-    int res = nums[0];
-    for (int i = 1; i < nums.size(); i++)
+    public:
+    int MaxSubarray(vector<int> &nums)
     {
-        maxEnding = max(nums[i], maxEnding + nums[i]);
-        res = max(maxEnding, res);
+        int maxEnding = nums[0];
+        int res = nums[0];
+        for (int i = 1; i < nums.size(); i++)
+        {
+            maxEnding = max(nums[i], maxEnding + nums[i]);
+            res = max(maxEnding, res);
+        }
+        return res;
     }
-    return res;
-}
 
-int maxSubarraySumCircular(vector<int> &nums)
-{
-    int n = nums.size();
-    int normalSub = MaxSubarray(nums);
-    if (normalSub < 0)
-        return normalSub;
-    int tot_sum = 0;
-    for (int i = 0; i < n; i++)
+    int maxSubarraySumCircular(vector<int> &nums)
     {
-        tot_sum += nums[i];
-        nums[i] = -1 * nums[i];
+        int n = nums.size();
+        int normalSub = MaxSubarray(nums);
+        if (normalSub < 0)
+            return normalSub;
+        int tot_sum = 0;
+        for (int i = 0; i < n; i++)
+        {
+            tot_sum += nums[i];
+            nums[i] = -1 * nums[i];
+        }
+
+        int maxCircular = tot_sum + MaxSubarray(nums);
+        return max(normalSub, maxCircular);
     }
-    
-    int maxCircular = tot_sum + MaxSubarray(nums);
-    return max(normalSub, maxCircular);
-}
 };
