@@ -1,5 +1,6 @@
-class Solution {
-public:
+class Solution 
+{
+    public:
     bool isValidSudoku(vector<vector<char>>& board) {
         vector<set<int>> rows(9), cols(9), blocks(9);
         
@@ -17,7 +18,6 @@ public:
                 blocks[(i/3)*3+j/3].insert(curr);
             }
         }
-        
         return true;
     }
 };
