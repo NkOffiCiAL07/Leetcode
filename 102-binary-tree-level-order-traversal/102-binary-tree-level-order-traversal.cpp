@@ -30,10 +30,11 @@ class Solution
             {
                 root = q.front(); q.pop();
                 a.push_back(root->val);
+                if(root->left) 
+                    q.push(root->left);
                 
-                if(root->left) q.push(root->left);
-                
-                if(root->right) q.push(root->right);
+                if(root->right) 
+                    q.push(root->right);
             }
             
             ar.push_back(a);
