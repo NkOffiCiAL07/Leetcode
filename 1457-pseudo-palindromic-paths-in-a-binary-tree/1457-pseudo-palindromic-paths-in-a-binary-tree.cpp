@@ -1,5 +1,6 @@
-class Solution {
-public:
+class Solution 
+{
+    public:
     int ans = 0;
     int pseudoPalindromicPaths (TreeNode* root) {
         preorder(root, 0);
