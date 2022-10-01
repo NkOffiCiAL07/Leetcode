@@ -1,19 +1,22 @@
 class Solution {
-public:
-    vector<int> parent;         
     
-    int findParent(int node){                   
-        if(node==parent[node]) return node;
-        return parent[node] = findParent(parent[node]);
+    public:
+    vector<int> parent;         
+    int find(int node){                   
+        if(node == parent[node]) 
+            return node;
+        
+        return parent[node] = find(parent[node]);
     }
     
-    bool join(int x, int y){
-        x = findParent(x);
-        y = findParent(y);
+    bool merge(int x, int y){
+        x = find(x);
+        y = find(y);
         
-        if(x==y) return false;
+        if(x == y) 
+            return false;
         
-        parent[y]=x;
+        parent[y] = x;
         return true;
     }
     
@@ -26,10 +29,13 @@ public:
         }
         
         int count=0;
-        for(int i=0; i<n; i++){
-            for(int j=i+1; j<n; j++){
-                if(stones[i][0]==stones[j][0] || stones[i][1]==stones[j][1]){
-                    if(join(i,j)) count++;
+        for(int i=0; i<n; i++)
+        {
+            for(int j=i+1; j<n; j++)
+            {
+                if((stones[i][0]==stones[j][0]) || (stones[i][1]==stones[j][1])){
+                    if(merge(i, j)) 
+                        count++;
                 }
             }
         }
