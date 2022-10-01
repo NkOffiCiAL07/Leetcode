@@ -1,41 +1,35 @@
-class LRUCache {
-        list<pair<int,int>> cache;
-        unordered_map<int,list<pair<int,int>>::iterator> mymap;  //Key, address in dequeue PAIR
-        
-        void refreshPosition(int key,int value)
+class LRUCache
+{
+    public:
+        list<pair<int,int>> l;
+        unordered_map<int,list<pair<int, int>>::iterator> m;
+        int size;
+        LRUCache(int capacity)
         {
-            cache.erase(mymap[key]);
-            cache.push_front(make_pair(key,value));
-            mymap[key] = cache.begin();     //Addr of new position stored in map
+            size=capacity;
         }
-    int capacity;
-public:
-    LRUCache(int capacity) {
-        this->capacity = capacity;
-    }
-    
-    int get(int key) {
-        if(mymap.find(key)!=mymap.end())
+        int get(int key)
         {
-            refreshPosition(key,(*mymap[key]).second);
-            return (*mymap[key]).second;
+            if(m.find(key)==m.end())
+                return -1;
+            l.splice(l.begin(),l,m[key]);
+            return m[key]->second;
         }
-        return -1;
-    }
-    
-    void put(int key, int value) {
-        if(mymap.find(key)!=mymap.end())
-            refreshPosition(key,value);
-        else
+        void put(int key, int value)
         {
-            //Add to cache
-            cache.push_front(make_pair(key,value));
-            mymap[key] = cache.begin();
-            if(mymap.size()>capacity)
+            if(m.find(key)!=m.end())
             {
-                mymap.erase(cache.back().first);
-                cache.pop_back();
+                l.splice(l.begin(),l,m[key]);
+                m[key]->second=value;
+                return;
             }
+            if(l.size()==size)
+            {
+                auto d_key=l.back().first;
+                l.pop_back();
+                m.erase(d_key);
+            }
+            l.push_front({key,value});
+            m[key]=l.begin();
         }
-    }
 };
