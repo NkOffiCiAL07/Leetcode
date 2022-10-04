@@ -9,9 +9,8 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution 
-{
-    public:
+class Solution {
+public:
     bool solve(TreeNode *root, int val)
     {   
         if(root == NULL && val != 0)
