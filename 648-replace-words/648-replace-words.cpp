@@ -1,11 +1,14 @@
-class TrieNode{
+class TrieNode
+{
 public:
     TrieNode *child[26];
     bool isEnd;
     
-    TrieNode(){
-        this->isEnd = false;
-        for(int i=0; i<26; i++) this->child[i]= NULL;
+    TrieNode()
+    {
+        isEnd = false;
+        for(int i=0; i<26; i++) 
+            child[i] = NULL;
     }
 };
 
@@ -19,11 +22,15 @@ public:
         string s = "";
         
         for(auto i : word){
-            if(!t->child[i-'a']) break;
+            if(!t->child[i-'a']) 
+                break;
+            
             s += i;
             t = t->child[i-'a'];
-            if(t->isEnd) return s;
+            if(t->isEnd) 
+                return s;
         }
+        
         return word;
     }
     
@@ -31,7 +38,9 @@ public:
         TrieNode *temp = newNode;
         
         for(auto l : word){
-            if(!temp->child[l-'a']) temp->child[l-'a'] = new TrieNode();
+            if(!temp->child[l-'a']) 
+                temp->child[l-'a'] = new TrieNode();
+            
             temp = temp->child[l-'a'];
         }
         
