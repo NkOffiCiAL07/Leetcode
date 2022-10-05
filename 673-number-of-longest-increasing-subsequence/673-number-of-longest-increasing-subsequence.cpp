@@ -1,7 +1,7 @@
 class Solution {
 public:
     int findNumberOfLIS(vector<int>& nums) {
-        const int n = nums.size();
+        int n = nums.size();
         vector<int> lis(n, 1); 
         vector<int> count(n, 1);
         int maxLen = 1;
@@ -27,7 +27,7 @@ public:
         }
         
         int numOfLIS = 0;
-        for(int i=0;i<n;i++){
+        for(int i=0; i<n; i++){
             if(lis[i] == maxLen)
                 numOfLIS += count[i];
         }
