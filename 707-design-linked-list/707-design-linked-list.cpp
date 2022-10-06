@@ -66,7 +66,7 @@ public:
         delete temp1;
     }
     
-    ~MyLinkedList() { delete head; }
+    //~MyLinkedList() { delete head; }
 };
 
 /**
