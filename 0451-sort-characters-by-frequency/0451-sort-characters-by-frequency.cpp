@@ -9,15 +9,9 @@ public:
         vector<pair<int, char>> v;
         for(auto i : m) 
             v.push_back({i.second, i.first});
-         
         sort(v.begin(), v.end(), greater<pair<int, char>>());
-        
         for(auto i : v) 
             s += string(i.first, i.second);
-        
         return s;
-        
-        
-        
     }
 };
