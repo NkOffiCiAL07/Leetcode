@@ -4,21 +4,20 @@ public:
         vector<vector<int>> ar;
         sort(a.begin(), a.end());
         int n = a.size();
-        for(int i=0; i<n;){
+        int i = 0;
+        while(i < n){
             int start = a[i][0];
             int end = a[i][1];
-            int j = i + 1;
-            while(j < n){
-                if(end >= a[j][0]){
-                    end = max(end, a[j][1]);
+            while(i < n){
+                if(end >= a[i][0]){
+                    end = max(end, a[i][1]);
                 }
                 else
                     break;
-                j++;
+                i++;
             }
             
             ar.push_back({start, end});
-            i = j;
         }
         
         return ar;
