@@ -10,7 +10,7 @@
  */
 
 struct MyComp{
-    bool operator()(ListNode* &a, ListNode* &b){
+    bool operator() (ListNode* &a, ListNode* &b){
         return a->val > b->val;
     }
 };
@@ -19,21 +19,24 @@ class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         priority_queue<ListNode*, vector<ListNode*>, MyComp> pq;
-        for(ListNode *list : lists){
-            if(list)
+        for(auto list : lists){
+            if(list){
                 pq.push(list);
+            }
         }
         
-        ListNode* res = new ListNode(0);
-        ListNode* ans = res;
+        ListNode *res = new ListNode(0);
+        ListNode *ans = res;
         while(!pq.empty()){
-            ListNode* temp = pq.top();
+            ListNode *temp = pq.top();
             pq.pop();
+            
             ans->next = temp;
             ans = ans->next;
             
-            if(temp->next)
+            if(temp->next){
                 pq.push(temp->next);
+            }
         }
         
         return res->next;
