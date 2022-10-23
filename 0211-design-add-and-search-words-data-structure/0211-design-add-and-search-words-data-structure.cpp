@@ -28,12 +28,13 @@ public:
         node->endofword = true;
     }
     
+    // string to const char*  ---> c_str()
     bool search(string s) 
     {
-       return search(s.c_str(), root);
+       return search(s, root);
     }
     
-    bool search(const char* s, trie* node) {
+    bool search(string s, trie* node) {
         for (int i = 0; s[i] && node; i++) {
             if (s[i] != '.') {
                 node = node -> word[s[i] - 'a'];
@@ -41,7 +42,7 @@ public:
                 trie* tmp = node;
                 for (int j = 0; j < 26; j++) {
                     node = tmp -> word[j];
-                    if (search(s + i + 1, node)) {
+                    if (search(s.substr(i+1), node)) {
                         return true;
                     }
                 }
