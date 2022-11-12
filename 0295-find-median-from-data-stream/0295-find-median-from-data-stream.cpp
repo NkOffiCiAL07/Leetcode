@@ -10,7 +10,6 @@ public:
         pmax.push(num);
         pmin.push(pmax.top());
         pmax.pop();
-        
         if(pmin.size() > pmax.size()){
             pmax.push(pmin.top());
             pmin.pop();
@@ -20,7 +19,6 @@ public:
     double findMedian() {
         if(pmax.size() > pmin.size())
             return pmax.top();
-        
         return (double) (pmax.top() + pmin.top()) / 2.0;
     }
 };
