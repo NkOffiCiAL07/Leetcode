@@ -1,7 +1,7 @@
 class Solution {
-public:
+    public:
     int shortestSubarray(vector<int>& A, int k) {
-        deque<int>q;
+        deque<int> q;
         int res = INT_MAX;
         vector<long long> nums;
         for(auto i : A) 
@@ -31,5 +31,4 @@ public:
         
         return res == INT_MAX ? -1 : res;
     }
-
 };
